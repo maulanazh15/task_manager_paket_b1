@@ -8,7 +8,7 @@ import '../models/task.dart';
 class TaskDetailScreen extends StatelessWidget {
   final Task task;
 
-  TaskDetailScreen({
+  const TaskDetailScreen({super.key, 
     required this.task,
   });
   
@@ -16,13 +16,13 @@ class TaskDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detail Tugas'),
+        title: const Text('Detail Tugas'),
         leading: IconButton(
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => TaskListScreen()));
+                  context, MaterialPageRoute(builder: (_) => const TaskListScreen()));
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -31,13 +31,13 @@ class TaskDetailScreen extends StatelessWidget {
           children: [
             Text(
               task.title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10.0),
-            Text(
+            const SizedBox(height: 10.0),
+            const Text(
               'Deskripsi:',
               style: TextStyle(
                 fontSize: 16.0,
@@ -45,8 +45,8 @@ class TaskDetailScreen extends StatelessWidget {
               ),
             ),
             Text(task.description),
-            SizedBox(height: 10.0),
-            Text(
+            const SizedBox(height: 10.0),
+            const Text(
               'Deadline:',
               style: TextStyle(
                 fontSize: 16.0,
@@ -54,7 +54,7 @@ class TaskDetailScreen extends StatelessWidget {
               ),
             ),
             Text(task.deadline), // Konversi waktu ke zona waktu lokal
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -67,7 +67,7 @@ class TaskDetailScreen extends StatelessWidget {
                                   initialTask: task,
                                 )));
                   },
-                  child: Text('Update'),
+                  child: const Text('Update'),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -75,32 +75,32 @@ class TaskDetailScreen extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          title: Text('Hapus Tugas'),
+                          title: const Text('Hapus Tugas'),
                           content:
-                              Text('Anda yakin ingin menghapus tugas ini?'),
+                              const Text('Anda yakin ingin menghapus tugas ini?'),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context)
                                     .pop(); // Tutup dialog konfirmasi
                               },
-                              child: Text('Batal'),
+                              child: const Text('Batal'),
                             ),
                             TextButton(
                               onPressed: () {
                                 // Panggil fungsi onDelete untuk menghapus tugas
                                 TaskApiService.deleteTask(task.id!);
                                 Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (_) => TaskListScreen())); // Tutup dialog konfirmasi
+                                    .push(MaterialPageRoute(builder: (_) => const TaskListScreen())); // Tutup dialog konfirmasi
                               },
-                              child: Text('Hapus'),
+                              child: const Text('Hapus'),
                             ),
                           ],
                         );
                       },
                     );
                   },
-                  child: Text('Delete'),
+                  child: const Text('Delete'),
                 ),
               ],
             ),

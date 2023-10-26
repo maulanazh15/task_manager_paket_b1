@@ -6,6 +6,8 @@ import '../services/task_api_services.dart';
 import '../widget/task_item.dart';
 
 class TaskListScreen extends StatefulWidget {
+  const TaskListScreen({super.key});
+
   @override
   _TaskListScreenState createState() => _TaskListScreenState();
 }
@@ -25,14 +27,14 @@ class _TaskListScreenState extends State<TaskListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daftar Tugas'),
+        title: const Text('Daftar Tugas'),
         leading: null,
       ),
       body: FutureBuilder<List<Task>>(
         future: _tasksFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -40,7 +42,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
               child: Text('Terjadi kesalahan: ${snapshot.error}'),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
+            return const Center(
               child: Text('Tidak ada tugas.'),
             );
           } else {
@@ -60,11 +62,11 @@ class _TaskListScreenState extends State<TaskListScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => NewTaskForm(),
+              builder: (context) => const NewTaskForm(),
             ),
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

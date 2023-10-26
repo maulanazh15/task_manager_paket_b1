@@ -8,7 +8,7 @@ import '../models/task.dart';
 class NewTaskForm extends StatefulWidget {
   final Task? initialTask; // Task awal untuk tujuan pembaruan
 
-  NewTaskForm({this.initialTask, Key? key}) : super(key: key);
+  const NewTaskForm({this.initialTask, Key? key}) : super(key: key);
 
   @override
   _NewTaskFormState createState() => _NewTaskFormState();
@@ -37,25 +37,25 @@ class _NewTaskFormState extends State<NewTaskForm> {
         title: Text(widget.initialTask != null ? "Edit Tugas" : "Tambah Tugas"),
       ),
       body: Container(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Text(
               widget.initialTask != null ? 'Edit Tugas' : 'Tambah Tugas Baru',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             TextField(
               controller: titleController,
-              decoration: InputDecoration(labelText: 'Judul Tugas'),
+              decoration: const InputDecoration(labelText: 'Judul Tugas'),
             ),
             TextField(
               controller: descriptionController,
-              decoration: InputDecoration(labelText: 'Deskripsi Tugas'),
+              decoration: const InputDecoration(labelText: 'Deskripsi Tugas'),
             ),
             TextField(
               controller: deadlineController,
               decoration:
-                  InputDecoration(labelText: 'Tenggat Waktu (YYYY-MM-DD)'),
+                  const InputDecoration(labelText: 'Tenggat Waktu (YYYY-MM-DD)'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -86,7 +86,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
                     // Jika tidak, maka kita menambahkan tugas baru
                     TaskApiService.createTask(newTask);
                     Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => TaskListScreen()));
+                      .push(MaterialPageRoute(builder: (context) => const TaskListScreen()));
                   }
 
                    // Kembali ke layar sebelumnya setelah berhasil menambah/memperbarui

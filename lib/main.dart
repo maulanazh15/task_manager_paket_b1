@@ -15,10 +15,12 @@ class MyHttpOverrides extends HttpOverrides{
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
-  runApp(TaskManagerApp());
+  runApp(const TaskManagerApp());
 }
 
 class TaskManagerApp extends StatelessWidget {
+  const TaskManagerApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +28,7 @@ class TaskManagerApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue, // Sesuaikan dengan tema yang Anda inginkan
       ),
-      home: TaskListScreen(),
+      home: const TaskListScreen(),
     );
   }
 }
